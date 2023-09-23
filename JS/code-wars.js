@@ -198,16 +198,102 @@ function sumStr(a,b) {
     /**
      * (+a + +b):
 
-            The + symbol before each variable a and b is used to explicitly convert the string values to numbers. This process is known as type coercion or type casting.
+            The + symbol before each variable a and b is used to explicitly convert the string values to numbers. 
+            This process is known as type coercion or type casting.
             By using +a, you're converting the a string to a numeric value.
             Similarly, +b converts the b string to a numeric value.
             Then, it adds these two numeric values together.
             + '':
 
-            After performing the addition, the result is implicitly converted back to a string by adding an empty string ('') to it. This is done because the function is expected to return a string.
+            After performing the addition, the result is implicitly converted back to a string by adding an empty string ('') to it. 
+            This is done because the function is expected to return a string.
             return statement:
 
             The result of the addition, which is now a string, is returned from the function.
      */
     return (+a+ +b)+''  
+}
+
+/**
+ * You ask a small girl,"How old are you?" She always says, "x years old", where x is a random number between 0 and 9.
+
+Write a program that returns the girl's age (0-9) as an integer.
+
+Assume the test input string is always a valid string. For example, the test input may be "1 year old" or "5 years old". 
+The first character in the string is always a number.
+*/
+
+function getAge(inputString){
+    return parseInt(inputString[1]);
+}
+
+/**
+ *Terminal game move function
+In this game, the hero moves from left to right. 
+The player rolls the dice and moves the number of spaces indicated by the dice two times.
+
+Create a function for the terminal game that takes the current position of the hero and the roll (1-6) and return the new position.
+
+Example:
+move(3, 6) should equal 15 
+*/
+
+function move (position, roll) {
+    return position + (roll * 2)
+}
+
+/**
+ * After a hard quarter in the office you decide to get some rest on a vacation. 
+ * So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
+
+You will need a rental car in order for you to get around in your vacation. 
+The manager of the car rental makes you some good offers.
+
+Every day you rent the car costs $40. 
+If you rent the car for 7 or more days, you get $50 off your total. 
+Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
+
+Write a code that gives out the total amount for different days(d).
+*/
+
+function rentalCarCost(d) {
+    return (d <= 0) ? 0 :
+           (d < 3) ? (40 * d) :
+           (d >= 3 && d < 7) ? (40 * d) - 20 : (40 * d) - 50
+}
+
+/**
+ * Implement a function that accepts 3 integer values a, b, c. 
+ * The function should return true if a triangle can be built with the sides of given length and false in any other case.
+
+(In this case, all triangles must have surface greater than 0 to be accepted).
+*/
+
+const triangle = (a,b,c) => {
+    return (a+b>c && b + c > a && a + c > b) ? true : false
+}
+
+/**
+ * Complete the function that accepts a string parameter, and reverses each word in the string.
+ * All spaces in the string should be retained.
+*/
+
+const reversed = str => {
+    let strings = str.split(' ')
+    let length = strings.length
+
+    if(length === 0)
+        return str
+    else if (length === 1) 
+      return str.split('').reverse().join('')    
+    let res = ''
+    for(let i = 0; i < length ; i++){
+        let word = strings[i].split('').reverse().join('')
+        if(i === 0)
+            res = word + ' '
+        else if (i === length - 1)
+            res = res + word
+        else res = res + word + ' '
+    }   
+    return res
 }
